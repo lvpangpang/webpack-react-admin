@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "private": true,
+  "scripts": {
+    "start": "node ../bin/index.js start",
+    "build": "node ../bin/index.js build"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "printWidth": 100
+  }
+}
