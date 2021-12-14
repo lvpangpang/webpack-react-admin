@@ -17,7 +17,7 @@ const parseConfig = {
       test: /\.(ts|tsx|js|jsx)$/,
       include: [__src, __admin],
       use: {
-        loader: 'babel-loader',
+        loader: 'babel-loader?cacheDirectory',
         options: {
           sourceType: 'unambiguous',
           ...babelConfig,
