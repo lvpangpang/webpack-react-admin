@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".", //支持webpack配置alias
-    "paths": { //支持webpack配置alias
+    "paths": {
+      //支持webpack配置alias
       "@/*": ["./src/*"]
     },
     "sourceMap": true, // 配合webpack
@@ -10,7 +11,5 @@
     "allowSyntheticDefaultImports": true // 允许导入符合es6模块规范的CommonJS模块
   },
   // 指定一个匹配列表（属于自动指定该路径下的所有ts相关文件）
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

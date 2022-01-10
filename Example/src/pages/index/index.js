@@ -30,7 +30,7 @@ function Index() {
         <Link to={'/detail'}>去详情</Link>
         <Link to={'/list'}>去列表</Link>
       </div>
-      <div className="name">吕肥肥</div>
+      <div className="name">吕肥肥是头猪888</div>
     </div>
   )
 }
