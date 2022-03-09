@@ -17,8 +17,6 @@ const {
   resolvePath,
 } = require('../utils')
 
-const Hello = require('../plugins/Hello')
-
 const PluginsConfig = [
   new webpack.DefinePlugin({
     __ENV__: JSON.stringify(getProcessArgv()),

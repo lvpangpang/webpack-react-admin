@@ -19,9 +19,9 @@ module.exports = {
     path: __dist,
     filename: 'js/main.[contenthash].js',
     chunkFilename: 'js/chunk.[contenthash].js',
-    publicPath: publicPath ? publicPath : '/'
+    publicPath: publicPath ? publicPath : '/',
   },
-  stats: 'errors-only',
+  stats: 'errors-warnings',
   // 分包策略
   optimization: micList ? {} : splitchunksConfig,
   // 解析

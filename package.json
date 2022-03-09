@@ -1,10 +1,10 @@
 {
   "name": "webpack-react-admin",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "快速搭建前端React项目，减少webpack配置学习成本",
   "main": "index.js",
   "bin": {
-    "webpack-react-admin": "bin/index.js"
+    "webpack-react-admin": "./index.js"
   },
   "scripts": {
     "start": "cd Example && npm start",
