@@ -1,17 +1,16 @@
 const ip = require('ip')
-const isPro = process.argv[2] === 'build'
 const splitchunksConfig = require('./splitchunks.config.js')
 const parseConfig = require('./parse.config.js')
 const pluginsConfig = require('./plugins.config.js')
-const { getAdminConfig, __src, __dist, __public, resolvePath, __adminIndex } = require('../utils')
+const { getAdminConfig, __src, __dist, __public, resolvePath, __adminIndex, isProd } = require('../utils')
 
 const { useFileRouter, entry, publicPath, micList } = getAdminConfig
 
 module.exports = {
   // 模式
-  mode: isPro ? 'production' : 'development',
+  mode: isProd ? 'production' : 'development',
   // 开发环境开启源代码查看功能
-  devtool: isPro ? false : 'inline-source-map',
+  devtool: isProd ? false : 'inline-source-map',
   // 入口
   entry: useFileRouter ? __adminIndex : resolvePath(entry || 'src/index.js'),
   // 出口

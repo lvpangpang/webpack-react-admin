@@ -1,4 +1,4 @@
-const { getAdminConfig } = require("../utils");
+const { getAdminConfig, isProd } = require('../utils')
 
 const babelConfig = {
   presets: [
@@ -22,7 +22,7 @@ const babelConfig = {
     '@babel/typescript',
   ],
   plugins: [
-    [require.resolve('react-refresh/babel')],
+    !isProd ? [require.resolve('react-refresh/babel')] : {},
     ['@babel/plugin-proposal-decorators', { legacy: true }],
     ['@babel/plugin-proposal-class-properties', { loose: false }],
     ['import', { libraryName: 'antd', style: 'css' }, 'antd'],
@@ -30,5 +30,4 @@ const babelConfig = {
   ].concat(getAdminConfig.babelPlugins || []),
 }
 
-module.exports = babelConfig;
-
+module.exports = babelConfig

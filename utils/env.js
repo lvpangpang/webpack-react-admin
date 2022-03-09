@@ -10,6 +10,11 @@ function getProcessArgv(name) {
   return name ? obj[name] : obj
 }
 
+function isProd() {
+  return process.argv[2] === 'build'
+}
+
 module.exports = {
   getProcessArgv,
+  isProd,
 }

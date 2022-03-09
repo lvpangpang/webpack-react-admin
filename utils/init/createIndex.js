@@ -3,7 +3,7 @@ const createRoutes = require('./createRoutes')
 const watchFile = require('./watchFile')
 const getAdminConfig = require('../getAdminConfig')
 const { __adminIndex, __pages } = require('../paths')
-const isPro = process.argv[2] === 'build'
+const isProd = process.argv[2] === 'build'
 
 function createIndex() {
   const routesMap = createRoutes()
@@ -20,7 +20,7 @@ function createIndex() {
   fs.outputFileSync(__adminIndex, resultHtml)
 }
 
-if (getAdminConfig.useFileRouter && !isPro) {
+if (getAdminConfig.useFileRouter && !isProd) {
   watchFile(__pages, () => {
     createIndex()
   })

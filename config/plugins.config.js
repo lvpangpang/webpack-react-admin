@@ -7,6 +7,7 @@ const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const WebpackBar = require('webpackbar')
+const { isProd } = require('../utils')
 
 const {
   getAdminConfig,
@@ -26,7 +27,7 @@ const PluginsConfig = [
   new HtmlWebpackPlugin({
     template: __publicIndexHtml,
   }),
-  new ReactRefreshPlugin(), // 为 react-refresh 添加
+  isProd ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
 ]
 
 if (getAdminConfig.useCopyPublic) {
