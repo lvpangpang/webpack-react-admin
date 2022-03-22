@@ -59,7 +59,7 @@ if (getAdminConfig.useEslint) {
   )
 }
 
-/* // 作为资源提供者
+// 作为资源提供者
 const micList = getAdminConfig.micList
 if (micList) {
   PluginsConfig.push(
@@ -89,7 +89,7 @@ if (useMicList) {
     })
   )
 }
- */
+
 PluginsConfig.concat(getAdminConfig.plugins || [])
 
 module.exports = PluginsConfig
