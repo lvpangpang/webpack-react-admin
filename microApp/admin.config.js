@@ -1,7 +1,5 @@
 module.exports = {
-  micList: {
-    
-  }
-  
+  microApp: {
+    name: 'app1'
+  },
 }
-

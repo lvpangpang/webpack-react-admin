@@ -2,9 +2,17 @@ const ip = require('ip')
 const splitchunksConfig = require('./splitchunks.config.js')
 const parseConfig = require('./parse.config.js')
 const pluginsConfig = require('./plugins.config.js')
-const { getAdminConfig, __src, __dist, __public, resolvePath, __adminIndex, isProd } = require('../utils')
+const {
+  getAdminConfig,
+  __src,
+  __dist,
+  __public,
+  resolvePath,
+  __adminIndex,
+  isProd,
+} = require('../utils')
 
-const { useFileRouter, entry, publicPath, micList } = getAdminConfig
+const { useFileRouter, entry, publicPath, microApp } = getAdminConfig
 
 module.exports = {
   // 模式
@@ -18,11 +26,11 @@ module.exports = {
     path: __dist,
     filename: 'js/main.[contenthash].js',
     chunkFilename: 'js/chunk.[contenthash].js',
-    publicPath: publicPath ? publicPath : '/',
+    publicPath: publicPath ? publicPath : 'auto',
   },
   stats: 'errors-warnings',
   // 分包策略
-  optimization: micList ? {} : splitchunksConfig,
+  optimization: microApp ? {} : splitchunksConfig,
   // 解析
   resolve: {
     alias: {

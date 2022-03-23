@@ -18,6 +18,7 @@ const {
   resolvePath,
 } = require('../utils')
 
+const { useCopyPublic, useEslint, microApp, useMicroApp } = getAdminConfig
 const PluginsConfig = [
   new webpack.DefinePlugin({
     __ENV__: JSON.stringify(getProcessArgv()),
@@ -30,7 +31,7 @@ const PluginsConfig = [
   isProd ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
 ]
 
-if (getAdminConfig.useCopyPublic) {
+if (useCopyPublic) {
   PluginsConfig.push(
     new CopyPlugin({
       patterns: [
@@ -47,7 +48,7 @@ if (getAdminConfig.useCopyPublic) {
 }
 
 // 是否启动eslint
-if (getAdminConfig.useEslint) {
+if (useEslint) {
   PluginsConfig.push(
     new ESLintPlugin({
       formatter: require('eslint-friendly-formatter'),
@@ -60,14 +61,12 @@ if (getAdminConfig.useEslint) {
 }
 
 // 作为资源提供者
-const micList = getAdminConfig.micList
-if (micList) {
+if (microApp) {
+  const { name } = microApp
   PluginsConfig.push(
     new ModuleFederationPlugin({
-      // 提供给其他服务加载的文件
+      name,
       filename: 'entry.js',
-      // 唯一ID，用于标记当前服务
-      name: 'app1',
       // 需要暴露的模块，使用时通过 `${name}/${expose}` 引入
       exposes: {
         './List': resolvePath('src/List'),
@@ -77,14 +76,31 @@ if (micList) {
 }
 
 // 获取远程资源提供者
-const useMicList = getAdminConfig.useMicList
-if (useMicList) {
+if (useMicroApp) {
+  const { name, publicPath } = useMicroApp
   PluginsConfig.push(
     new ModuleFederationPlugin({
-      name: 'app2',
-      // 引用 app1 的服务
       remotes: {
-        app1: 'app1@http://26.26.26.1:3000/entry.js',
+        [name]: `${name}@${publicPath}/entry.js`,
+        /* [name]: `promise new Promise(resolve => {
+          const remoteUrl = '${publicPath}/entry.js?now='+Date.now()
+          const script = document.createElement('script')
+          script.src = remoteUrl
+          script.onload = () => {
+            const proxy = {
+              get: (request) => window.${name}.get(request),
+              init: (arg) => {
+                try {
+                  return window.${name}.init(arg)
+                } catch(e) {
+                  console.log(e)
+                }
+              }
+            }
+            resolve(proxy)
+          }
+          document.head.appendChild(script)
+        })` */
       },
     })
   )
