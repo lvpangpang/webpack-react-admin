@@ -1,0 +1,20 @@
+{
+  "name": "example",
+  "private": true,
+  "scripts": {
+    "start": "node ../../index.js start",
+    "build": "node ../../index.js build"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "printWidth": 100
+  },
+  "dependencies": {
+    "antd": "^4.16.11",
+    "js-common-library": "^1.1.5",
+    "mockjs": "^1.1.0",
+    "nprogress": "^0.2.0"
+  }
+}
