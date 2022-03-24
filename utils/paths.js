@@ -15,4 +15,5 @@ module.exports = {
   __index: resolvePath('src/index.js'),
   __admin: resolvePath('.admin'),
   __adminIndex: resolvePath('.admin/index.js'),
+  ___microRoutes: resolvePath('.admin/microRoutes.js'),
 }

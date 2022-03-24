@@ -2,8 +2,8 @@
   "name": "example",
   "private": true,
   "scripts": {
-    "start": "node ../index.js start",
-    "build": "node ../index.js build"
+    "start": "node ../../index.js start",
+    "build": "node ../../index.js build"
   },
   "prettier": {
     "semi": false,

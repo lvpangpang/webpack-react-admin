@@ -7,7 +7,7 @@ const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const WebpackBar = require('webpackbar')
-const { isProd } = require('../utils')
+const { isProd, createMicroRoutes } = require('../utils')
 
 const {
   getAdminConfig,
@@ -62,15 +62,13 @@ if (useEslint) {
 
 // 作为资源提供者
 if (microApp) {
-  const { name } = microApp
+  const { name, exposes } = microApp
   PluginsConfig.push(
     new ModuleFederationPlugin({
       name,
       filename: 'entry.js',
       // 需要暴露的模块，使用时通过 `${name}/${expose}` 引入
-      exposes: {
-        './List': resolvePath('src/List'),
-      },
+      exposes: createMicroRoutes()
     })
   )
 }

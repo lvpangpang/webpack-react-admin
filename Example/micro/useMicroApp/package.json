@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "start": "node ../../../index.js start",
+    "build": "node ../../../index.js build"
+  }
+}

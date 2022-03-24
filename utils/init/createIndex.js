@@ -1,5 +1,5 @@
 const fs = require('fs-extra')
-const createRoutes = require('./createRoutes')
+const {createRoutes} = require('./createRoutes')
 const watchFile = require('./watchFile')
 const getAdminConfig = require('../getAdminConfig')
 const { __adminIndex, __pages } = require('../paths')
