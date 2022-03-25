@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
@@ -15,20 +14,19 @@ const {
   __public,
   __publicIndexHtml,
   __dist,
-  resolvePath,
 } = require('../utils')
 
 const { useCopyPublic, useEslint, microApp, useMicroApp } = getAdminConfig
+
 const PluginsConfig = [
   new webpack.DefinePlugin({
     __ENV__: JSON.stringify(getProcessArgv()),
   }),
   new WebpackBar(),
-  new CleanWebpackPlugin(),
   new HtmlWebpackPlugin({
     template: __publicIndexHtml,
   }),
-  isProd ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
+  !isProd ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
 ]
 
 if (useCopyPublic) {

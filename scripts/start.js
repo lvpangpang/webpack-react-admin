@@ -7,24 +7,20 @@ const {
   open,
   checkAdminVersion,
   checkPackageJsonVersion,
-  createIndex,
-  createMicroRoutes,
 } = require('../utils')
+const init = require('../utils/init')
 
 async function start() {
-  const { port, useFileRouter, checkAdmin, checkPackage, microApp } = getAdminConfig
+  const { port, checkAdmin, checkPackage } = getAdminConfig
   if (checkAdmin) {
     checkAdminVersion()
   }
   if (checkPackage) {
     checkPackageJsonVersion()
   }
-  if (useFileRouter) {
-    createIndex()
-  }
-  if (microApp) {
-    createMicroRoutes()
-  }
+  
+  init()
+
   const port1 = await getUnoccupiedPort(port)
   const options = Object.assign(webpackConfig.devServer, { port: port1 })
   const compiler = webpack(webpackConfig)

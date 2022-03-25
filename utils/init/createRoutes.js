@@ -1,36 +1,29 @@
+const fs = require('fs-extra')
 const glob = require('glob')
-const fs = require('fs')
-const { __pages, __microRoutes } = require('../paths')
-const getAdminConfig = require('../getAdminConfig')
-
-// 去掉后缀名以及最后的index路径
-function replaceIndex(str) {
-  return str && str.replace(/(\/index)?\.[jt]sx?/g, '')
-}
-
-// 排除一些文件格式
-function checkFileType(url) {
-  const arr = url.split('/')
-  const len = arr.length
-  const lastItem = arr[len - 1]
-  if (['store', 'api'].indexOf(lastItem) !== -1) {
-    return false
-  }
-  if (/[A-Z]/.test(lastItem.charAt(0))) {
-    return false
-  }
-  return true
-}
-
-// 动态路由必须是[id].js这种命名格式的文件
-function dynamicMatch(url) {
-  if (url.indexOf('[') !== -1) {
-    return url.replace(/\[/g, ':').replace(/\]/g, '')
-  }
-  return url
-}
+const { replaceIndex, dynamicMatch, checkFileType } = require('./common')
+const watchFile = require('./watchFile')
+const { __adminRoutes, __pages } = require('../paths')
+const isProd = process.argv[2] === 'build'
 
 function createRoutes() {
+  const routesMap = getRoutes()
+  fs.outputFileSync(
+    __adminRoutes,
+    `import React from 'react' 
+
+const routes= {${routesMap}}
+    
+export default routes`
+  )
+}
+
+if (!isProd) {
+  watchFile(__pages, () => {
+    createRoutes()
+  })
+}
+
+function getRoutes() {
   const files = glob.sync('**/*.*(js|jsx|tsx|ts)', {
     cwd: __pages,
   })
@@ -40,38 +33,11 @@ function createRoutes() {
     url = `/${url === 'index' ? '' : url}`
     url = dynamicMatch(url)
     if (checkFileType(url)) {
-      const res = {
-        url,
-        component: `React.lazy(() => import('${'@/pages/' + item}'))`,
-      }
+      const res = `'${url}': React.lazy(() => import('@/pages/${item}'))`
       routesMap.push(res)
     }
   })
-  return routesMap
+  return routesMap.join(',')
 }
 
-function createMicroRoutes() {
-  const { microApp } = getAdminConfig
-  const { name } = microApp
-  const files = glob.sync('**/*.*(js|jsx|tsx|ts)', {
-    cwd: __pages,
-  })
-  const routesMicroMap = []
-  console.log(files)
-  files.forEach((item) => {
-    let url = replaceIndex(item)
-    url = dynamicMatch(url)
-    let _url = `./${url}`
-    const res = {
-      [_url]: `@/pages/${item}`,
-    }
-    routesMicroMap.push(res)
-  })
-  console.log(routesMicroMap)
-  return routesMicroMap
-}
-
-module.exports = {
-  createRoutes,
-  createMicroRoutes,
-}
+module.exports = createRoutes

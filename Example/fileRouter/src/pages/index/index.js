@@ -21,7 +21,7 @@ function Index() {
       <br />
       <div className={styles.link}>
         <Link to={'/detail'}>去详情</Link>
-        <Link to={'/list'}>去列表</Link>
+        <Link to={'/order'}>去订单</Link>
       </div>
     </div>
   )

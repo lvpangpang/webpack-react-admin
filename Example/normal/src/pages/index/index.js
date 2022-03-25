@@ -8,7 +8,6 @@ import store from './store'
 import styles from './index.less'
 import './index.css'
 
-
 function Index() {
   return (
     <div className={styles.home_box}>

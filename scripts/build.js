@@ -1,11 +1,9 @@
 const webpack = require('webpack')
 const webpackConfig = require('../config/webpack.config.js')
-const { success, error, warning, info, createIndex, getAdminConfig, beautifyBuild } = require('../utils')
+const { success, error, warning, info, beautifyBuild } = require('../utils')
+const init = require('../utils/init')
 
-const { useFileRouter } = getAdminConfig
-if (useFileRouter) {
-  createIndex()
-}
+init()
 const compiler = webpack(webpackConfig)
 info('正在打包构建......')
 compiler.run((err, stats) => {

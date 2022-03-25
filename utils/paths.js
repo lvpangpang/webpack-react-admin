@@ -12,8 +12,10 @@ module.exports = {
   __dist: resolvePath('dist'),
   __src: resolvePath('src'),
   __pages: resolvePath('src/pages'),
+  __layout: resolvePath('src/layout'),
   __index: resolvePath('src/index.js'),
   __admin: resolvePath('.admin'),
   __adminIndex: resolvePath('.admin/index.js'),
+  __adminRoutes: resolvePath('.admin/routes.js'),
   ___microRoutes: resolvePath('.admin/microRoutes.js'),
 }

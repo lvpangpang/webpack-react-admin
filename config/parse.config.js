@@ -16,10 +16,12 @@ const parseConfig = {
     {
       test: /\.(ts|tsx|js|jsx)$/,
       include: [__src, __admin],
+      exclude: /node_modules/,
       use: {
-        loader: 'babel-loader?cacheDirectory',
+        loader: 'babel-loader',
         options: {
-          sourceType: 'unambiguous',
+          cacheDirectory: true,
+          // sourceType: 'unambiguous',
           ...babelConfig,
         },
       },
