@@ -4,11 +4,15 @@ const parseConfig = require('./parse.config.js')
 const pluginsConfig = require('./plugins.config.js')
 const { getAdminConfig, __src, __dist, __public, resolvePath, isProd, __root } = require('../utils')
 
-const { useFileRouter, entry, publicPath, microApp } = getAdminConfig
+const { useFileRouter, entry, publicPath, microApp, useMicroApp } = getAdminConfig
 
+// 不同模式走不同的入口
 let _entry = resolvePath(entry || 'src/index.js')
 if (useFileRouter) {
   _entry = resolvePath('.admin/fileRouter/index.js')
+}
+if (useMicroApp) {
+  _entry = resolvePath('.admin/micro/index.js')
 }
 
 module.exports = {

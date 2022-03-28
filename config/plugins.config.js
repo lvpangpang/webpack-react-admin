@@ -6,9 +6,10 @@ const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const WebpackBar = require('webpackbar')
-const { isProd, createMicroRoutes } = require('../utils')
+const createMicroRoutes = require('../utils/init/createMicroRoutes')
 
 const {
+  isProd,
   getAdminConfig,
   getProcessArgv,
   __public,
@@ -29,6 +30,7 @@ const PluginsConfig = [
   !isProd ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
 ]
 
+// 静态资源复制
 if (useCopyPublic) {
   PluginsConfig.push(
     new CopyPlugin({
@@ -60,7 +62,7 @@ if (useEslint) {
 
 // 作为资源提供者
 if (microApp) {
-  const { name, exposes } = microApp
+  const { name } = microApp
   PluginsConfig.push(
     new ModuleFederationPlugin({
       name,

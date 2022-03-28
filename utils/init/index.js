@@ -4,15 +4,19 @@ const getAdminConfig = require('../getAdminConfig')
 const createRoot = require('./createRoot')
 const createRoutes = require('./createRoutes')
 const createLayout = require('./createLayout')
-const { useFileRouter } = getAdminConfig
+const createMicroList = require('./createMicroList')
+const { useFileRouter, useMicroApp } = getAdminConfig
 const { __admin } = require('../paths')
 
 function init() {
-  if (useFileRouter) {
+  if (useFileRouter || useMicroApp) {
     fs.copySync(join(__dirname, './entry'), __admin)
     createRoutes()
     createRoot()
     createLayout()
+    if (useMicroApp) {
+      createMicroList()
+    }
   }
 }
 
