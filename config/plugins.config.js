@@ -20,10 +20,10 @@ const {
 const { useCopyPublic, useEslint, microApp, useMicroApp } = getAdminConfig
 
 const PluginsConfig = [
+  new WebpackBar(),
   new webpack.DefinePlugin({
     __ENV__: JSON.stringify(getProcessArgv()),
   }),
-  new WebpackBar(),
   new HtmlWebpackPlugin({
     template: __publicIndexHtml,
   }),

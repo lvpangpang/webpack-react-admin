@@ -7,8 +7,8 @@
     "webpack-react-admin": "./index.js"
   },
   "scripts": {
-    "start": "cd Example && npm start",
-    "build": "cd Example && npm run build"
+    "start": "cd Example/normal && npm start",
+    "build": "cd Example/normal && npm run build"
   },
   "author": "lvpangpang",
   "license": "ISC",
