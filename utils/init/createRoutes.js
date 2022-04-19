@@ -23,6 +23,7 @@ if (!isProd) {
   })
 }
 
+// 获取路径和文件路径的映射对象
 function getRoutes() {
   const files = glob.sync('**/*.*(js|jsx|tsx|ts)', {
     cwd: __pages,

@@ -8,7 +8,8 @@ function getModuleVersion(name) {
   })
   return stdout.replace(/\s|[\r\n]/g, '')
 }
-// 判断脚手架的版本是否是最新的
+
+// 判断webpack-reaqct-admin版本是否最新
 function checkAdminVersion() {
   const adminName = 'webpack-react-admin'
   const { dependencies, devDependencies } = require(__packageJson)

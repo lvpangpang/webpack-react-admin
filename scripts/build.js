@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const webpackConfig = require('../config/webpack.config.js')
-const { success, error, warning, info, beautifyBuild } = require('../utils')
 const init = require('../utils/init')
+const { success, error, warning, info, beautifyBuild } = require('../utils')
 
 init()
 const compiler = webpack(webpackConfig)

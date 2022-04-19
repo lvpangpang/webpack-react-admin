@@ -21,7 +21,6 @@ const parseConfig = {
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
-          // sourceType: 'unambiguous',
           ...babelConfig,
         },
       },

@@ -14,6 +14,7 @@ function watchRoot() {
     })
   }
 }
+
 function createRoot() {
   watchRoot()
   const content = fs.pathExistsSync(__layout)

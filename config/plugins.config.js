@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
-const WebpackBar = require('webpackbar')
 const createMicroRoutes = require('../utils/init/createMicroRoutes')
 
 const {
@@ -20,7 +19,6 @@ const {
 const { useCopyPublic, useEslint, microApp, useMicroApp } = getAdminConfig
 
 const PluginsConfig = [
-  new WebpackBar(),
   new webpack.DefinePlugin({
     __ENV__: JSON.stringify(getProcessArgv()),
   }),

@@ -1,12 +1,13 @@
 const { resolve } = require('path')
 const resolvePath = (path) => resolve(process.cwd(), path)
 
+// 指定路径地址集合
 module.exports = {
   resolvePath,
+  __root: process.cwd(),
   __packageJson: resolvePath('package.json'),
   __nodeModules: resolvePath('node_modules'),
   __adminConfig: resolvePath('admin.config.js'),
-  __root: process.cwd(),
   __public: resolvePath('public'),
   __publicIndexHtml: resolvePath('public/index.html'),
   __dist: resolvePath('dist'),

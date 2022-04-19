@@ -3,6 +3,7 @@ const Table = require('cli-table')
 const { extname } = require('path')
 const { info } = require('./info')
 
+// 打包结果图表
 function beautifyBuild(stats) {
   const statsJson = stats.toJson()
   const { time, assets } = statsJson

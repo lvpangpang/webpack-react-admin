@@ -1,4 +1,3 @@
-const ip = require('ip')
 const splitchunksConfig = require('./splitchunks.config.js')
 const parseConfig = require('./parse.config.js')
 const pluginsConfig = require('./plugins.config.js')
@@ -53,7 +52,6 @@ module.exports = {
   // 开发服务器
   devServer: {
     historyApiFallback: true,
-    host: ip.address(),
     hot: true,
     static: {
       directory: __public,
