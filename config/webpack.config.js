@@ -26,7 +26,7 @@ module.exports = {
   output: {
     path: __dist,
     filename: 'js/[name].[contenthash].js',
-    chunkFilename: 'js/chunk.[contenthash].js',
+    chunkFilename: 'js/[name].[contenthash].js',
     hashDigestLength: 10,
     publicPath: publicPath ? publicPath : '/',
     clean: true,

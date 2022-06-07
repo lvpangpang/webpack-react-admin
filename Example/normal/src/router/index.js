@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-const Home = React.lazy(() => import(/* webpackChunkName: "index" */ '../pages/index'))
-const Detail = React.lazy(() => import(/* webpackChunkName: "detail" */ '../pages/detail'))
-const List = React.lazy(() => import(/* webpackChunkName: "list" */ '../pages/list'))
+const Home = React.lazy(() => import(/* webpackChunkName: "/pages/index/index" */ '../pages/index'))
+const Detail = React.lazy(() => import(/* webpackChunkName: "/pages/detail/abc" */ '../pages/detail/abc'))
+const List = React.lazy(() => import(/* webpackChunkName: "pages/list/index" */ '../pages/list'))
 
 export default function Index() {
   return (
