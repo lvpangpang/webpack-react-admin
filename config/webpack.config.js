@@ -14,7 +14,6 @@ if (useMicroApp) {
   _entry = resolvePath('.admin/micro/index.js')
 }
 
-console.log(publicPath)
 module.exports = {
   cache: true,
   // 模式
