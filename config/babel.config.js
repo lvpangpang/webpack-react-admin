@@ -22,7 +22,7 @@ const babelConfig = {
     '@babel/typescript',
   ],
   plugins: [
-    !isProd ? [require.resolve('react-refresh/babel')] : {},
+    !isProd() ? [require.resolve('react-refresh/babel')] : {},
     ['@babel/plugin-proposal-decorators', { legacy: true }],
     ['@babel/plugin-proposal-class-properties', { loose: false }],
     ['import', { libraryName: 'antd', style: 'css' }, 'antd'],

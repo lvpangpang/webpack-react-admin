@@ -3,7 +3,8 @@ const glob = require('glob')
 const { replaceIndex, dynamicMatch, checkFileType } = require('./common')
 const watchFile = require('./watchFile')
 const { __adminRoutes, __pages } = require('../paths')
-const isProd = process.argv[2] === 'build'
+const { isProd } = require('../index.js')
+
 
 function createRoutes() {
   const routesMap = getRoutes()
@@ -17,7 +18,7 @@ export default routes`
   )
 }
 
-if (!isProd) {
+if (!isProd()) {
   watchFile(__pages, () => {
     createRoutes()
   })

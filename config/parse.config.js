@@ -1,3 +1,4 @@
+const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const { getAdminConfig, __src, __admin } = require('../utils')
 const babelConfig = require('./babel.config.js')
 const postCssConfig = require('./postCss.config.js')
@@ -28,13 +29,13 @@ const parseConfig = {
     {
       test: /\.css$/,
       exclude: /node_modules/,
-      use: ['style-loader', 'css-loader', postCssLoader],
+      use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader],
     },
     {
       test: /\.less$/,
       exclude: /node_modules/,
       use: [
-        'style-loader',
+        miniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
           options: getAdminConfig.isCssModule
@@ -54,12 +55,12 @@ const parseConfig = {
     {
       test: /\.css$/,
       include: /node_modules/,
-      use: ['style-loader', 'css-loader'],
+      use: [miniCssExtractPlugin.loader, 'css-loader'],
     },
     {
       test: /\.less$/,
       include: /node_modules/,
-      use: ['style-loader', 'css-loader', 'less-loader'],
+      use: [miniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
     },
     {
       test: /\.(png|jpg|svg|gif|otf)$/,

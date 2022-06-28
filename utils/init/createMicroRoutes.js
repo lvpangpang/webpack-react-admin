@@ -2,8 +2,7 @@ const fs = require('fs-extra')
 const glob = require('glob')
 const { replaceIndex, dynamicMatch, checkFileType } = require('./common')
 const watchFile = require('./watchFile')
-const isProd = process.argv[2] === 'build'
-const { __pages, __microRoutes, getAdminConfig } = require('../index.js')
+const { __pages, __microRoutes, getAdminConfig, isProd } = require('../index.js')
 const { microApp } = getAdminConfig
 const { name } = microApp || {}
 
@@ -21,7 +20,7 @@ export default routes`
   return exposesConfig
 }
 
-if (!isProd && microApp) {
+if (!isProd() && microApp) {
   watchFile(__pages, () => {
     createMicroRoutes()
   })

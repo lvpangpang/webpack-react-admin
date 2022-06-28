@@ -14,12 +14,13 @@ if (useMicroApp) {
   _entry = resolvePath('.admin/micro/index.js')
 }
 
+console.log(publicPath)
 module.exports = {
   cache: true,
   // 模式
-  mode: isProd ? 'production' : 'development',
+  mode: isProd() ? 'production' : 'development',
   // 开发环境开启源代码查看功能
-  devtool: isProd ? false : 'inline-source-map',
+  devtool: isProd() ? false : 'inline-source-map',
   // 入口
   entry: _entry,
   // 出口
@@ -28,7 +29,7 @@ module.exports = {
     filename: 'js/[name].[contenthash].js',
     chunkFilename: 'js/[name].[contenthash].js',
     hashDigestLength: 10,
-    publicPath: publicPath ? publicPath : '/',
+    publicPath: isProd() ? publicPath || '/' : '/',
     clean: true,
   },
   stats: 'errors-warnings',

@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const createMicroRoutes = require('../utils/init/createMicroRoutes')
@@ -25,7 +26,11 @@ const PluginsConfig = [
   new HtmlWebpackPlugin({
     template: __publicIndexHtml,
   }),
-  !isProd ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
+  new miniCssExtractPlugin({
+    // 生成的单独的css文件重命名
+    filename: 'css/chunk.css',
+  }),
+  !isProd() ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
 ]
 
 // 静态资源复制
@@ -66,7 +71,7 @@ if (microApp) {
       name,
       filename: 'entry.js',
       // 需要暴露的模块，使用时通过 `${name}/${expose}` 引入
-      exposes: createMicroRoutes()
+      exposes: createMicroRoutes(),
     })
   )
 }
