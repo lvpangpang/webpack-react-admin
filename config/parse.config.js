@@ -1,5 +1,5 @@
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
-const { getAdminConfig, __src, __admin } = require('../utils')
+const { __src, __admin } = require('../utils')
 const babelConfig = require('./babel.config.js')
 const postCssConfig = require('./postCss.config.js')
 
@@ -8,6 +8,18 @@ const postCssLoader = {
   options: {
     postcssOptions: {
       plugins: [require('autoprefixer')(postCssConfig)],
+    },
+  },
+}
+
+const cssModulesLoader = {
+  loader: 'css-loader',
+  options: {
+    sourceMap: false,
+    // 开启 CSS Modules
+    modules: {
+      mode: 'local',
+      localIdentName: '[name]__[local]--[hash:base64:8]',
     },
   },
 }
@@ -29,52 +41,42 @@ const parseConfig = {
     {
       test: /\.css$/,
       exclude: /node_modules/,
-      use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader],
+      oneOf: [
+        {
+          resourceQuery: /css_modules/,
+          use: [miniCssExtractPlugin.loader, cssModulesLoader, postCssLoader],
+        },
+        {
+          use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader],
+        },
+      ],
     },
     {
       test: /\.less$/,
       exclude: /node_modules/,
-      use: [
-        miniCssExtractPlugin.loader,
+      oneOf: [
         {
-          loader: 'css-loader',
-          options: getAdminConfig.isCssModule
-            ? {
-                sourceMap: false,
-                modules: {
-                  mode: 'local',
-                  localIdentName: '[name]__[local]--[hash:base64:8]',
-                },
-              }
-            : {},
+          resourceQuery: /css_modules/,
+          use: [miniCssExtractPlugin.loader, cssModulesLoader, postCssLoader, 'less-loader'],
         },
-        postCssLoader,
-        'less-loader',
+        {
+          use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader, 'less-loader'],
+        },
       ],
     },
     {
       test: /\.css$/,
       include: /node_modules/,
-      use: [miniCssExtractPlugin.loader, 'css-loader'],
+      use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader],
     },
     {
       test: /\.less$/,
       include: /node_modules/,
-      use: [miniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+      use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader, 'less-loader'],
     },
     {
       test: /\.(png|jpg|svg|gif|otf)$/,
-      use: [
-        {
-          loader: 'url-loader',
-          options: {
-            options: {
-              limit: 1024,
-            },
-            outputPath: 'file/',
-          },
-        },
-      ],
+      type: 'asset'
     },
   ],
 }

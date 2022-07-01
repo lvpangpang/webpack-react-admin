@@ -8,6 +8,8 @@ import store from './store'
 import styles from './index.less'
 import './index.css'
 
+
+import img1 from './2.jpg'
 function Index() {
   return (
     <div className={styles.home_box}>
@@ -22,6 +24,8 @@ function Index() {
         <Link to={'/detail'}>去详情</Link>
         <Link to={'/list'}>去列表</Link>
       </div>
+      <div className='name'>吕肥肥</div>
+      <img src={img1} className="img"></img>
     </div>
   )
 }

@@ -5,3 +5,7 @@
   margin-top: 3rem;
   text-shadow: 1px 1px 2px red;
 }
+.img {
+  margin-top: 10px;
+  max-width: 100%;
+}

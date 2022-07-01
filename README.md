@@ -5,7 +5,7 @@
 * 支持 ts, tsx, js, jsx, less,css 等文件类型的编译打包
 * 支持装饰器
 * 自动使用空闲端口启动服务
-* 支持 less 模块化,css 不做模块化
+* 根据引入样式的方式自动支持是否模块化
 * 对 antd，antd-mobile 库自动按需打包
 * 快捷配置多个环境变量
 * 支持拷贝静态文件到dist
@@ -58,7 +58,6 @@ npm install webpack-react-admin --D
 | publicPath   | 文件输出公共前缀 | 参考[webpack publicPath](https://www.webpackjs.com/configuration/output/#output-publicpath) |
 | port         | 开发服务器端口号 | 默认值：3000   |
 | babelPlugins | babel 插件配置   | |
-| isCssModule | 是否开启less模块化   | css不走模块化 | 
 | useCopyPublic | 是否开启拷贝public文件夹下面所有静态文件到dist | 默认不开启 |
 | checkAdmin | 项目启动前自动检测脚手架是否是最新版本 | 默认不开启 |
 | checkPackage | 项目启动前自动检测本地依赖和package.json中版本是否一致 | 默认不开启 |
