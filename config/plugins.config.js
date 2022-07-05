@@ -7,6 +7,7 @@ const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const createMicroRoutes = require('../utils/init/createMicroRoutes')
+const HtmlResources = require('../plugins/html-resources')
 
 const {
   isProd,
@@ -31,6 +32,7 @@ const PluginsConfig = [
     filename: 'css/chunk.css',
   }),
   !isProd() ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
+  new HtmlResources()
 ]
 
 // 静态资源复制

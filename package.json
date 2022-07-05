@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-admin",
-  "version": "2.2.0",
+  "version": "2.4.0",
   "description": "快速搭建前端React项目，减少webpack配置学习成本",
   "main": "index.js",
   "bin": {
@@ -25,6 +25,7 @@
     "babel-loader": "8.1.0",
     "babel-plugin-import": "1.13.1",
     "chalk": "4.1.1",
+    "cheerio": "^1.0.0-rc.12",
     "chokidar": "^3.5.2",
     "cli-table": "0.3.6",
     "copy-webpack-plugin": "9.0.1",
