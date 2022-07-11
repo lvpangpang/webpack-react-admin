@@ -9,7 +9,7 @@ function Layout() {
   }
   return (
     <>
-      <div style={{ height: '100px', background: '#108ee9' }}></div>
+      <div className="com-header"></div>
       <Router></Router>
     </>
   )

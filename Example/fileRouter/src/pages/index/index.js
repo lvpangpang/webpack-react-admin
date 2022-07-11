@@ -8,7 +8,6 @@ import store from './store'
 import styles from './index.less'
 import './index.css'
 
-
 function Index() {
   return (
     <div className={styles.home_box}>
@@ -20,8 +19,9 @@ function Index() {
       </div>
       <br />
       <div className={styles.link}>
-        <Link to={'/detail'}>去详情</Link>
-        <Link to={'/order'}>去订单</Link>
+        <Link to={'/detail'}>详情</Link>
+        <Link to={'/order'}>订单</Link>
+        <Link to={'/my'}>个人中心</Link>
       </div>
     </div>
   )

@@ -17,7 +17,7 @@ function checkFileType(url) {
   return true
 }
 
-// 动态路由必须是[id].js这种命名格式的文件
+// 动态路由必须是[id]这种命名格式的文件或者文件夹
 function dynamicMatch(url) {
   if (url.indexOf('[') !== -1) {
     return url.replace(/\[/g, ':').replace(/\]/g, '')

@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import Login from '@/pages/login'
+import './index.css'
 
 function Layout({ children }) {
   const { pathname } = useLocation()
@@ -8,7 +9,7 @@ function Layout({ children }) {
   }
   return (
     <>
-      <div style={{ height: '100px', background: '#108ee9' }}></div>
+      <div className="com-header">公共Header</div>
       {children}
     </>
   )

@@ -11,9 +11,9 @@ const { __admin } = require('../paths')
 function init() {
   if (useFileRouter || useMicroApp) {
     fs.copySync(join(__dirname, './entry'), __admin)
-    createRoutes()
     createRoot()
     createLayout()
+    createRoutes()
     if (useMicroApp) {
       createMicroList()
     }

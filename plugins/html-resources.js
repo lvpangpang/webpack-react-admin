@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const { isProd, getAdminConfig } = require('../utils')
 const defaultExternals = require('../config/externals.js')
 
-const { externals, title } = getAdminConfig
+const { externals, title, icon } = getAdminConfig
 const resultExternals = Object.values({ ...defaultExternals, ...externals }).map((item) => {
   return item.url
 })
@@ -20,6 +20,9 @@ class HtmlResources {
           }
           if (title) {
             $('title').html(title)
+          }
+          if (icon) {
+            $('head').append(`<link rel="icon" type="image/png" href=${icon} />`)
           }
           htmlPluginData.html = $.html()
           callback(null, htmlPluginData)
