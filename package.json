@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-admin",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "快速搭建前端React项目，减少webpack配置学习成本",
   "main": "index.js",
   "bin": {
@@ -47,6 +47,7 @@
     "open": "8.2.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "postcss-loader": "4.2.0",
+    "px2rem-loader": "0.1.9",
     "react-eslint-config": "0.0.5",
     "react-refresh": "0.11.0",
     "semver": "7.3.5",

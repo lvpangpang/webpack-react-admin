@@ -2,6 +2,16 @@ const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const { __src, __admin } = require('../utils')
 const babelConfig = require('./babel.config.js')
 const postCssConfig = require('./postCss.config.js')
+const { getAdminConfig } = require('../utils')
+const { isRem } = getAdminConfig
+
+const remLoader = {
+  loader: 'px2rem-loader',
+  options: {
+    remUnit: 75,
+    remPrecision: 8,
+  },
+}
 
 const postCssLoader = {
   loader: 'postcss-loader',
@@ -44,10 +54,14 @@ const parseConfig = {
       oneOf: [
         {
           resourceQuery: /css_modules/,
-          use: [miniCssExtractPlugin.loader, cssModulesLoader, postCssLoader],
+          use: [miniCssExtractPlugin.loader, cssModulesLoader, postCssLoader].concat(
+            isRem ? [remLoader] : []
+          ),
         },
         {
-          use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader],
+          use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader].concat(
+            isRem ? [remLoader] : []
+          ),
         },
       ],
     },
@@ -57,10 +71,14 @@ const parseConfig = {
       oneOf: [
         {
           resourceQuery: /css_modules/,
-          use: [miniCssExtractPlugin.loader, cssModulesLoader, postCssLoader, 'less-loader'],
+          use: [miniCssExtractPlugin.loader, cssModulesLoader, postCssLoader]
+            .concat(isRem ? [remLoader] : [])
+            .concat(['less-loader']),
         },
         {
-          use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader, 'less-loader'],
+          use: [miniCssExtractPlugin.loader, 'css-loader', postCssLoader]
+            .concat(isRem ? [remLoader] : [])
+            .concat(['less-loader']),
         },
       ],
     },
@@ -76,7 +94,7 @@ const parseConfig = {
     },
     {
       test: /\.(png|jpg|svg|gif|otf)$/,
-      type: 'asset'
+      type: 'asset',
     },
   ],
 }

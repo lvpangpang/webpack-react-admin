@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const { isProd, getAdminConfig } = require('../utils')
 const defaultExternals = require('../config/externals.js')
 
-const { externals, title, icon } = getAdminConfig
+const { externals, title, icon, isRem } = getAdminConfig
 const resultExternals = Object.values({ ...defaultExternals, ...externals }).map((item) => {
   return item.url
 })
@@ -23,6 +23,11 @@ class HtmlResources {
           }
           if (icon) {
             $('head').append(`<link rel="icon" type="image/png" href=${icon} />`)
+          }
+          if (isRem) {
+            $('head').append(
+              `<script>!function(e,t){function n(){t.body?t.body.style.fontSize=12*o+"px":t.addEventListener("DOMContentLoaded",n)}function d(){var e=i.clientWidth/10;i.style.fontSize=e+"px"}var i=t.documentElement,o=e.devicePixelRatio||1;if(n(),d(),e.addEventListener("resize",d),e.addEventListener("pageshow",function(e){e.persisted&&d()}),o>=2){var a=t.createElement("body"),s=t.createElement("div");s.style.border=".5px solid transparent",a.appendChild(s),i.appendChild(a),1===s.offsetHeight&&i.classList.add("hairlines"),i.removeChild(a)}}(window,document);</script>`
+            )
           }
           htmlPluginData.html = $.html()
           callback(null, htmlPluginData)
