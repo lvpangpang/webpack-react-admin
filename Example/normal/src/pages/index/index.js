@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
-import { Button } from 'antd-mobile'
+import { Button } from 'antd'
 
 import store from './store'
 import styles from './index.less'

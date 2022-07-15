@@ -26,5 +26,5 @@ compiler.run((err, stats) => {
     }
     success('构建成功')
     beautifyBuild(stats)
-  }
+    process.exit()  }
 })

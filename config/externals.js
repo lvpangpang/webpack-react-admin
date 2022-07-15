@@ -13,7 +13,7 @@ module.exports = {
   },
   mobx: {
     name: 'mobx',
-    url: 'https://unpkg.com/mobx@6.0.0/dist/mobx.umd.production.min.js',
+    url: 'https://unpkg.com/mobx@6.3.2/dist/mobx.umd.production.min.js',
   },
 
   'mobx-react-lite': {
@@ -23,5 +23,9 @@ module.exports = {
   axios: {
     name: 'axios',
     url: 'https://unpkg.com/axios@0.21.0/dist/axios.min.js',
+  },
+  antd: {
+    name: 'antd',
+    url: 'https://unpkg.com/antd@4.16.2/dist/antd.min.js',
   },
 }

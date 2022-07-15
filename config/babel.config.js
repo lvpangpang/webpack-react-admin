@@ -23,11 +23,9 @@ const babelConfig = {
   ],
   plugins: [
     require('../plugins/auto-css-modules'),
-    !isProd() ? [require.resolve('react-refresh/babel')] : {},
+    // !isProd() ? [require.resolve('react-refresh/babel')] : {},
     ['@babel/plugin-proposal-decorators', { legacy: true }],
     ['@babel/plugin-proposal-class-properties', { loose: false }],
-    ['import', { libraryName: 'antd', style: 'css' }, 'antd'],
-    ['import', { libraryName: 'antd-mobile', style: 'css' }, 'antd-mobile'],
   ].concat(getAdminConfig.babelPlugins || []),
 }
 

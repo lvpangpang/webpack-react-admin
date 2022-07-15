@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const miniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const createMicroRoutes = require('../utils/init/createMicroRoutes')
@@ -27,11 +27,12 @@ const PluginsConfig = [
   new HtmlWebpackPlugin({
     template: __publicIndexHtml,
   }),
-  new miniCssExtractPlugin({
-    // 生成的单独的css文件重命名
-    filename: 'css/chunk.css',
+  new MiniCssExtractPlugin({
+    filename: 'css/[name].[contenthash].css',
+    chunkFilename: 'css/[name].[contenthash].css',
+    ignoreOrder: true,
   }),
-  !isProd() ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
+  // !isProd() ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
   new HtmlResources()
 ]
 

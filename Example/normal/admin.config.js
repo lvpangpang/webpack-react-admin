@@ -6,5 +6,6 @@ module.exports = {
       url: 'https://unpkg.com/react@17.0.0/umd/react.production.min.js',
     },
   },
-  isRem: true
+  isRem: true,
+  babelPlugins:[['import', { libraryName: 'antd', style: 'css' }, 'antd']]
 }

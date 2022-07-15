@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'antd-mobile'
+import { Button } from 'antd'
 
 function Index(props) {
   return (
