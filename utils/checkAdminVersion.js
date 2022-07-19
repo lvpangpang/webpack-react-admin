@@ -21,7 +21,7 @@ function checkAdminVersion() {
   const lastAdminVersion = getModuleVersion(adminName)
   info('正在检测脚手架是否为最新版本...')
   if (packAdminVersion !== lastAdminVersion) {
-    error(`请手动安装最新版本的脚手架再启动项目\n  最新的版本号为V ${lastAdminVersion}`)
+    error(`请手动安装最新版本的脚手架再启动项目\n  最新的版本号为V${lastAdminVersion}`)
     return
   }
 }

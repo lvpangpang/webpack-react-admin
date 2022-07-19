@@ -11,6 +11,9 @@
     "tabWidth": 2,
     "printWidth": 100
   },
+  "devDependencies": {
+    "webpack-react-admin": "2.6.0"
+  },
   "dependencies": {
     "antd": "^4.16.11",
     "js-common-library": "^1.1.5",

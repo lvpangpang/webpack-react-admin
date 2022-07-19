@@ -2,7 +2,6 @@ const TerserPlugin = require('terser-webpack-plugin')
 const { __src } = require('../utils')
 
 const splitChunksConfig = {
-  minimize: true,
   minimizer: [
     new TerserPlugin({
       extractComments: false

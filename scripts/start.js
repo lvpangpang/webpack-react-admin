@@ -10,7 +10,7 @@ const {
 } = require('../utils')
 
 async function start() {
-  const { port, checkAdmin, checkPackage } = getAdminConfig
+  const { port, checkAdmin = true, checkPackage } = getAdminConfig
   if (checkAdmin) {
     checkAdminVersion()
   }

@@ -3,7 +3,7 @@ const parseConfig = require('./parse.config.js')
 const pluginsConfig = require('./plugins.config.js')
 const defaultExternals = require('../config/externals.js')
 const { getAdminConfig, __src, __dist, __public, resolvePath, isProd, __root } = require('../utils')
-const { useFileRouter, entry, publicPath, microApp, useMicroApp, externals } = getAdminConfig
+const { useFileRouter, entry, publicPath, microApp, useMicroApp, externals, proxy } = getAdminConfig
 
 const resultExternals = {}
 const tempExternals = {
@@ -69,6 +69,7 @@ module.exports = {
       publicPath: '/',
       watch: true,
     },
+    proxy: proxy || {},
     compress: true,
     client: {
       overlay: {

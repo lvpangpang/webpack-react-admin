@@ -61,9 +61,10 @@ npm install webpack-react-admin --D
 | entry        | 入口配置 | 参考[webpack entry](https://www.webpackjs.com/configuration/entry-context/#entry) |
 | publicPath   | 文件输出公共前缀 | 参考[webpack publicPath](https://www.webpackjs.com/configuration/output/#output-publicpath) |
 | port         | 开发服务器端口号 | 默认值：3000   |
+| proxy         | 开发代理 |   |
 | babelPlugins | babel 插件配置   | |
 | useCopyPublic | 是否开启拷贝public文件夹下面所有静态文件到dist | 默认不开启 |
-| checkAdmin | 项目启动前自动检测脚手架是否是最新版本 | 默认不开启 |
+| checkAdmin | 项目启动前自动检测脚手架是否是最新版本 | 默认开启 |
 | checkPackage | 项目启动前自动检测本地依赖和package.json中版本是否一致 | 默认不开启 |
 | useFileRouter | 是否开启文件式路由 | 默认不开启（具体使用参考Example/fileRouter） |
 | externals | 生产环境资源是否走cdn |  externals: {react: {name: 'React',url: 'https://unpkg.com/react@17.0.0/umd/react.production.min.js',},},

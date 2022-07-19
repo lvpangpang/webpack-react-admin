@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const WebpackBar = require('webpackbar')
 const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
@@ -21,6 +22,7 @@ const {
 const { useCopyPublic, useEslint, microApp, useMicroApp } = getAdminConfig
 
 const PluginsConfig = [
+  // new WebpackBar(),
   new webpack.DefinePlugin({
     __ENV__: JSON.stringify(getProcessArgv()),
   }),
