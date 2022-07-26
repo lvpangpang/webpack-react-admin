@@ -4834,6 +4834,11 @@ npm-run-path@^4.0.1:
   dependencies:
     path-key "^3.0.0"
 
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "http://npm.shandiantech.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
+
 nth-check@^1.0.2:
   version "1.0.2"
   resolved "http://npm.shandiantech.com/nth-check/-/nth-check-1.0.2.tgz#b2bd295c37e3dd58a3bf0700376663ba4d9cf05c"
@@ -5702,9 +5707,9 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "http://npm.shandiantech.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha1-tYsBCsQMIsVldhbI0sLALHv0eew=
 
-px2rem-loader@^0.1.9:
+px2rem-loader@0.1.9:
   version "0.1.9"
-  resolved "https://registry.yarnpkg.com/px2rem-loader/-/px2rem-loader-0.1.9.tgz#c8f2bf8be8b9a6b43a5f67d14b2febe1160e56a0"
+  resolved "http://npm.shandiantech.com/px2rem-loader/-/px2rem-loader-0.1.9.tgz#c8f2bf8be8b9a6b43a5f67d14b2febe1160e56a0"
   integrity sha512-3Ew8At5W/HHIIUe/KZk+FBRRb20KtgP1N1c/BnMlXk6LNkqrFmUIUF35GF/evzNdj/Q63iWJpkmn/c5qSMplRg==
   dependencies:
     loader-utils "^1.1.0"

@@ -35,7 +35,7 @@ const PluginsConfig = [
     ignoreOrder: true,
   }),
   // !isProd() ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
-  new HtmlResources()
+  new HtmlResources(),
 ]
 
 // 静态资源复制
@@ -87,8 +87,8 @@ if (useMicroApp) {
   PluginsConfig.push(
     new ModuleFederationPlugin({
       remotes: {
-        [name]: `${name}@${publicPath}/entry.js`,
-        /* [name]: `promise new Promise(resolve => {
+        // [name]: `${name}@${publicPath}/entry.js`,
+        [name]: `promise new Promise(resolve => {
           const remoteUrl = '${publicPath}/entry.js?now='+Date.now()
           const script = document.createElement('script')
           script.src = remoteUrl
@@ -106,7 +106,7 @@ if (useMicroApp) {
             resolve(proxy)
           }
           document.head.appendChild(script)
-        })` */
+        })`,
       },
     })
   )

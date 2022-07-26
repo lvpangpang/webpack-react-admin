@@ -16,7 +16,7 @@ Object.keys(tempExternals).forEach((item) => {
 
 // 不同模式走不同的入口
 let _entry = resolvePath(entry || 'src/index.js')
-if (useFileRouter) {
+if (useFileRouter || microApp) {
   _entry = resolvePath('.admin/fileRouter/index.js')
 }
 if (useMicroApp) {

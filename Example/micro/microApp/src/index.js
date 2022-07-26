@@ -1,8 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 
-function App() {
-  return 123
+function App({ children }) {
+  return <BrowserRouter>{children}</BrowserRouter>
 }
 
-ReactDOM.render(<App></App>, document.querySelector('#root'))
+export default App
