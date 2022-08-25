@@ -1,18 +1,36 @@
 const splitchunksConfig = require('./splitchunks.config.js')
 const parseConfig = require('./parse.config.js')
 const pluginsConfig = require('./plugins.config.js')
-const defaultExternals = require('../config/externals.js')
+const bmsLibExternals = require('../config/externals.js')
 const { getAdminConfig, __src, __dist, __public, resolvePath, isProd, __root } = require('../utils')
-const { useFileRouter, entry, publicPath, microApp, useMicroApp, externals, proxy } = getAdminConfig
+const {
+  useFileRouter,
+  entry,
+  publicPath,
+  microApp,
+  useMicroApp,
+  externals,
+  bmsLib,
+  proxy,
+} = getAdminConfig
 
 const resultExternals = {}
-const tempExternals = {
-  ...defaultExternals,
-  ...externals,
+let tempExternals = {}
+if (bmsLib) {
+  tempExternals = {
+    ...bmsLibExternals,
+  }
+}
+if (externals) {
+  tempExternals = {
+    ...tempExternals,
+    ...externals
+  }
 }
 Object.keys(tempExternals).forEach((item) => {
   resultExternals[item] = tempExternals[item]['name']
 })
+console.log(resultExternals)
 
 // 不同模式走不同的入口
 let _entry = resolvePath(entry || 'src/index.js')

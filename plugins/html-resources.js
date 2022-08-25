@@ -1,10 +1,22 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const cheerio = require('cheerio')
 const { isProd, getAdminConfig } = require('../utils')
-const defaultExternals = require('../config/externals.js')
+const bmsLibExternals = require('../config/externals.js')
 
-const { externals, title, icon, isRem } = getAdminConfig
-const resultExternals = Object.values({ ...defaultExternals, ...externals }).map((item) => {
+const { externals, bmsLib, title, icon, isRem } = getAdminConfig
+let resultExternals = {}
+if (bmsLib) {
+  resultExternals = {
+    ...bmsLibExternals,
+  }
+}
+if (externals) {
+  resultExternals = {
+    ...resultExternals,
+    ...externals,
+  }
+}
+resultExternals = Object.values(resultExternals).map((item) => {
   return item.url
 })
 

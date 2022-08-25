@@ -15,7 +15,6 @@ module.exports = {
     name: 'mobx',
     url: 'https://unpkg.com/mobx@6.3.2/dist/mobx.umd.production.min.js',
   },
-
   'mobx-react-lite': {
     name: 'mobxReactLite',
     url: 'https://unpkg.com/mobx-react-lite@3.2.0/dist/mobxreactlite.umd.production.min.js',

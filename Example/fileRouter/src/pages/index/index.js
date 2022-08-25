@@ -12,16 +12,13 @@ function Index() {
   return (
     <div className={styles.home_box}>
       <div className={styles.text}>{`首页数据: ${store.num}`}</div>
-      <div>
-        <Button type="primary" onClick={store.setNum}>
-          点我
-        </Button>
-      </div>
+      <Button type="primary" onClick={store.setNum}>
+        点我
+      </Button>
       <br />
       <div className={styles.link}>
         <Link to={'/detail'}>详情</Link>
         <Link to={'/order'}>订单</Link>
-        <Link to={'/my'}>个人中心</Link>
       </div>
     </div>
   )
