@@ -1,6 +1,5 @@
 node_modules
 Example
-admin.config.js
 tsconfig.json
 dist
 package-lock.json

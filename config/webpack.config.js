@@ -14,6 +14,7 @@ const {
   proxy,
 } = getAdminConfig
 
+// Externals配置
 const resultExternals = {}
 let tempExternals = {}
 if (bmsLib) {
@@ -30,7 +31,6 @@ if (externals) {
 Object.keys(tempExternals).forEach((item) => {
   resultExternals[item] = tempExternals[item]['name']
 })
-console.log(resultExternals)
 
 // 不同模式走不同的入口
 let _entry = resolvePath(entry || 'src/index.js')

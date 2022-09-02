@@ -67,8 +67,10 @@ npm install webpack-react-admin --D
 | checkAdmin | 项目启动前自动检测脚手架是否是最新版本 | 默认开启 |
 | checkPackage | 项目启动前自动检测本地依赖和package.json中版本是否一致 | 默认不开启 |
 | useFileRouter | 是否开启文件式路由 | 默认不开启（具体使用参考Example/fileRouter） |
-| externals | 生产环境资源是否走cdn |  externals: {react: {name: 'React',url: 'https://unpkg.com/react@17.0.0/umd/react.production.min.js',},},
+| externals | 生产环境资源是否走cdn |  externals: {react: {name: 'React',url: 'https://unpkg.com/react@17.0.0/umd/react.production.min.js',},},|
+| bmsLib | 是否抽离后台常用库 | 默认不开启 |
 | isRem | px自动转rem   | 750px规格设计稿|
+
 
 
 
