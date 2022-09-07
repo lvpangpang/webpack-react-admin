@@ -3,12 +3,12 @@ const webpack = require('webpack')
 const WebpackBar = require('webpackbar')
 const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const createMicroRoutes = require('../utils/init/createMicroRoutes')
 const HtmlResources = require('../plugins/html-resources')
+// const FileListPlugin = require('../plugins/file-list')
 
 const {
   isProd,
@@ -34,8 +34,8 @@ const PluginsConfig = [
     chunkFilename: 'css/[name].[contenthash].css',
     ignoreOrder: true,
   }),
-  // !isProd() ? new ReactRefreshPlugin() : () => {}, // 为 react-refresh 添加
   new HtmlResources(),
+  // new FileListPlugin()
 ]
 
 // 静态资源复制
