@@ -1,10 +1,8 @@
-import React from 'react'
+import { lazy } from 'react' 
 
-const routes = {
-  '/': React.lazy(() => import('app1/')),
-  '/list': React.lazy(() => import('app1/list')),
-  '/order/detail': React.lazy(() => import('app1/order/detail')),
-  '/order': React.lazy(() => import('app1/order')),
-}
-
+const routes= {'/':lazy(() => import('app1/')),
+'/list':lazy(() => import('app1/list')),
+'/order/detail':lazy(() => import('app1/order/detail')),
+'/order':lazy(() => import('app1/order'))}
+    
 export default routes

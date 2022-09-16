@@ -1,8 +1,7 @@
 const fs = require('fs-extra')
 const glob = require('glob')
 const { replaceIndex, dynamicMatch, checkFileType } = require('./common')
-const watchFile = require('./watchFile')
-const { __pages, __microRoutes, getAdminConfig, isProd } = require('../index.js')
+const { __pages, __microRoutes, getAdminConfig } = require('../index.js')
 const { microApp } = getAdminConfig
 const { name } = microApp || {}
 
@@ -10,20 +9,14 @@ function createMicroRoutes() {
   const { exposesConfig, routes } = getMicroRoutes()
   fs.outputFileSync(
     __microRoutes,
-    `import React from 'react' 
+    `import { lazy } from 'react' 
 
-const routes= {${routes.join(',')}}
+const routes= {${routes.join(',\n')}}
     
 export default routes`
   )
 
-  return exposesConfig
-}
-
-if (!isProd() && microApp) {
-  watchFile(__pages, () => {
-    createMicroRoutes()
-  })
+  return exposesConfig 
 }
 
 function getMicroRoutes() {
@@ -38,7 +31,7 @@ function getMicroRoutes() {
     url = dynamicMatch(url)
     if (checkFileType(url)) {
       exposesConfig['.' + url] = `@/pages/${item}`
-      let routesItem = `'${url}': React.lazy(() => import('${name}${url}'))`
+      let routesItem = `'${url}':lazy(() => import('${name}${url}'))`
       routes.push(routesItem)
     }
   })

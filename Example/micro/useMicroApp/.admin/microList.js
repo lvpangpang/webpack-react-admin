@@ -1,5 +1,5 @@
 
 export default function getMicroList() {
-  return Promise.all([import('app1/list')])
+  return Promise.all([import('app1/routes')])
 }
   
