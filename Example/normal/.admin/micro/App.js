@@ -9,20 +9,19 @@ import microList from '@@/.admin/microRoutes.js'
 
 function Main() {
   const [resultRoutesList, setResultRoutesList] = useState({ ...microList, ...routesMap })
-  console.log(resultRoutesList)
 
-  // useEffect(() => {
-  //   microList()
-  //     .then(([remoteRoutesMap]) => {
-  //       setResultRoutesList({
-  //         ...remoteRoutesMap,
-  //         ...routesMap,
-  //       })
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  // }, [])
+/*   useEffect(() => {
+    microList()
+      .then(([remoteRoutesMap]) => {
+        setResultRoutesList({
+          ...remoteRoutesMap,
+          ...routesMap,
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, []) */
   return (
     <Layout>
       <Suspense fallback={<Fallback />}>

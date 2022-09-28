@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const WebpackBar = require('webpackbar')
 const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -10,7 +9,6 @@ const createMicroRoutes = require('../utils/init/createMicroRoutes')
 const HtmlResources = require('../plugins/html-resources')
 
 const {
-  isProd,
   getAdminConfig,
   getProcessArgv,
   __public,

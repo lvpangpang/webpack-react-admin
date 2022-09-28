@@ -1,4 +1,4 @@
-const { getAdminConfig, isProd } = require('../utils')
+const { getAdminConfig } = require('../utils')
 
 const babelConfig = {
   presets: [
@@ -23,9 +23,6 @@ const babelConfig = {
   ],
   plugins: [
     require('../plugins/auto-css-modules'),
-    // !isProd() ? [require.resolve('react-refresh/babel')] : {},
-    ['@babel/plugin-proposal-decorators', { legacy: true }],
-    ['@babel/plugin-proposal-class-properties', { loose: false }],
   ].concat(getAdminConfig.babelPlugins || []),
 }
 

@@ -1,8 +1,5 @@
 import { lazy } from 'react' 
 
-const routes= {'/':lazy(() => import('app1/')),
-'/list':lazy(() => import('app1/list')),
-'/order/detail':lazy(() => import('app1/order/detail')),
-'/order':lazy(() => import('app1/order'))}
+const routes= '["/:app1/","/list:app1/list","/order/detail:app1/order/detail","/order:app1/order"]'
     
 export default routes
