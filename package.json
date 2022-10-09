@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-admin",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "快速搭建前端React项目，减少webpack配置学习成本",
   "main": "index.js",
   "bin": {

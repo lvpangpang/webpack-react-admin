@@ -8,7 +8,7 @@ function checkFileType(url) {
   const arr = url.split('/')
   const len = arr.length
   const lastItem = arr[len - 1]
-  if (['store', 'api'].indexOf(lastItem) !== -1) {
+  if (['store', 'api', 'apis'].indexOf(lastItem) !== -1) {
     return false
   }
   if (/[A-Z]/.test(lastItem.charAt(0))) {

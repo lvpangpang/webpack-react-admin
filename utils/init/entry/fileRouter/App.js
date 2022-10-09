@@ -12,7 +12,7 @@ function Main() {
       <Suspense fallback={<Fallback />}>
         <Switch>
           {Object.keys(routesMap).map((key) => {
-            return <Route exact path={key} component={routesMap[key]} />
+            return <Route key={key} exact path={key} component={routesMap[key]} />
           })}
         </Switch>
       </Suspense>
