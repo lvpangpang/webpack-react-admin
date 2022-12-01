@@ -12,7 +12,7 @@
     "printWidth": 100
   },
   "devDependencies": {
-    "webpack-react-admin": "2.8.0"
+    "webpack-react-admin": "3.0.1"
   },
   "dependencies": {
     "antd": "^4.16.11",

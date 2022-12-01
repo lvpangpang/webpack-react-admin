@@ -1,4 +1,5 @@
 const path = require('path')
+const glob = require('glob')
 const webpack = require('webpack')
 const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -14,12 +15,12 @@ const {
   __public,
   __publicIndexHtml,
   __dist,
+  isProd,
 } = require('../utils')
 
-const { useCopyPublic, useEslint, microApp, useMicroApp } = getAdminConfig
+const { useEslint, microApp, useMicroApp } = getAdminConfig
 
 const PluginsConfig = [
-  // new WebpackBar(),
   new webpack.DefinePlugin({
     __ENV__: JSON.stringify(getProcessArgv()),
   }),
@@ -32,20 +33,22 @@ const PluginsConfig = [
     ignoreOrder: true,
   }),
   new HtmlResources(),
-  // new FileListPlugin()
 ]
 
-// 静态资源复制
-if (useCopyPublic) {
+// public文件夹静态资源复制
+const files = glob.sync('**/*.*', {
+  cwd: __public,
+})
+if (isProd() && files.length > 1) {
   PluginsConfig.push(
     new CopyPlugin({
       patterns: [
         {
           from: __public,
+          to: __dist,
           globOptions: {
             ignore: ['**/*index.html'],
           },
-          to: __dist,
         },
       ],
     })

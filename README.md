@@ -13,6 +13,7 @@
 * 支持文件式路由，多人项目可以不用维护路由表，减少冲突
 * 生产环境react，react-dom,react-router-dom, mobx, mobx-react-lite, axios等常用库自动走CDN资源，大大减少打包体积，该功能可以配置
 * 支持px自动转rem
+* public 文件夹中静态文件自动复制到dist文件
 ## 1.Install
 
 ```bash
@@ -61,7 +62,6 @@ npm install webpack-react-admin --D
 | port         | 开发服务器端口号 | 默认值：3000   |
 | proxy         | 开发代理 |   |
 | babelPlugins | babel 插件配置   | |
-| useCopyPublic | 是否开启拷贝public文件夹下面所有静态文件到dist | 默认不开启 |
 | checkAdmin | 项目启动前自动检测脚手架是否是最新版本 | 默认开启 |
 | checkPackage | 项目启动前自动检测本地依赖和package.json中版本是否一致 | 默认不开启 |
 | useFileRouter | 是否开启文件式路由 | 默认不开启（具体使用参考Example/fileRouter） |
