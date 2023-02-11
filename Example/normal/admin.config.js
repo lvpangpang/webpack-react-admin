@@ -1,4 +1,5 @@
 module.exports = {
   title: '吕肥肥',
-  bmsLib: true
+  bmsLib: true,
+  checkAdmin: false
 }

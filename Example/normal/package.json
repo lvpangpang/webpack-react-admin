@@ -11,9 +11,6 @@
     "tabWidth": 2,
     "printWidth": 100
   },
-  "devDependencies": {
-    "webpack-react-admin": "3.0.2"
-  },
   "dependencies": {
     "js-common-library": "^1.1.5",
     "mockjs": "^1.1.0",
